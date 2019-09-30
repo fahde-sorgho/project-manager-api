@@ -14,9 +14,11 @@ const swaggerDocument = jsYaml.safeLoad(spec);
 
 //Load routes
 const UsersRouter = require('./users/routes.config');
+const AuthRouter = require('./security/routes.config');
 
 app.use(bodyParser.json());
 UsersRouter.routesConfig(app);
+AuthRouter.routesConfig(app);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(config.port, function () {
