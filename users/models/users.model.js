@@ -24,3 +24,34 @@ exports.findById = (id) => {
         return result;
     });
 };
+
+exports.findByEmail = (email) => {
+    return User.find({email: email});
+};
+
+exports.list = (perPage, page) => {
+    return new Promise((resolve, reject) => {
+        User.find()
+            .limit(perPage)
+            .skip(perPage * page)
+            .exec(function (err, users) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(users);
+                }
+            })
+    });
+};
+
+exports.removeById = (userId) => {
+    return new Promise((resolve, reject) => {
+        User.remove({_id: userId}, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(err);
+            }
+        });
+    });
+};

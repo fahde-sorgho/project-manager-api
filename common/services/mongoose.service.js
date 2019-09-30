@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 let count = 0;
 
 const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
     autoIndex: false, // Don't build indexes
     reconnectTries: 30, // Retry up to 30 times
     reconnectInterval: 500, // Reconnect every 500ms
