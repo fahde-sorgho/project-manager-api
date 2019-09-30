@@ -1,5 +1,5 @@
 # nodeApiProject
-A resp api student project with nodejs and angular
+A rest api student project with nodejs and angular
 
 # Installation
 - Installer NodeJs + Npm
