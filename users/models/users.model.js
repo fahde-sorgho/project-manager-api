@@ -1,6 +1,35 @@
 const mongoose = require('../../common/services/mongoose.service').mongoose;
 const Schema = mongoose.Schema;
 
+/**
+ * @type {mongoose.Schema}
+ *
+ * @swagger
+ * definitions:
+ *  User:
+ *      type: "object"
+ *      properties:
+ *          id:
+ *              type: "integer"
+ *              format: "int64"
+ *          firstName:
+ *              type: "string"
+ *          lastName:
+ *              type: "string"
+ *          email:
+ *              type: "string"
+ *          password:
+ *              type: "string"
+ *          permissionLevel:
+ *              type: "integer"
+ *      example:
+ *          firstName: "firstName"
+ *          lastName: "lastName"
+ *          password: "password"
+ *          permissionLevel: 1
+ *          id: 0
+ *          email: "email"
+ */
 const userSchema = new Schema({
     firstName: String,
     lastName: String,
@@ -21,6 +50,7 @@ exports.findById = (id) => {
         result = result.toJSON();
         delete result._id;
         delete result.__v;
+        delete result.password;
         return result;
     });
 };
