@@ -2,10 +2,11 @@ const config = require('./config/env.js');
 
 const express = require('express');
 const app = express();
+var cors = require('cors');
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
-
+app.use(cors());
 const swaggerDefinition = {
     swagger: "2.0",
     info: {
@@ -63,6 +64,11 @@ AuthRouter.routesConfig(myRouter);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/v1',myRouter);
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.listen(config.port, function () {
     console.log('App is listening at port localhost:%s', config.port);
