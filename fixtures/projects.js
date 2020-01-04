@@ -8,10 +8,10 @@ module.exports = [
         sprints:
             [
                 {
-                    _id: uuid.v4,
+                    _id: uuid.v4(),
                     tasks: [
                         {
-                            _id: uuid.v4,
+                            _id: uuid.v4(),
                             name: "Test task",
                             description: "Test task description",
                             status: "todo",
@@ -30,7 +30,7 @@ module.exports = [
                     updated_at: date
                 },
                 {
-                    _id: uuid.v4,
+                    _id: uuid.v4(),
                     tasks: [],
                     name: "Test sprint 2",
                     description: "The test description 2",

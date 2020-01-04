@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt'),
 
 module.exports = [
     {
-        _id: uuid.v4,
+        _id: uuid.v4(),
         firstName : "Admin",
         lastName : "Admin",
         email : "admin@admin.com",
