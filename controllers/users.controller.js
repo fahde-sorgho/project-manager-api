@@ -89,3 +89,13 @@ exports.removeById = async (req, res) => {
         res.status(404).send("User not found");
     }
 };
+
+exports.getProjects = async (req, res) => {
+    try {
+        await userService.findById(req.params.userId);
+        let projects = await userService.getProjects(req.params.userId);
+        res.status(200).send(projects);
+    } catch (e) {
+        res.status(404).send("User not found");
+    }
+};

@@ -1,5 +1,6 @@
 const Joi = require('@hapi/joi');
 const User = require('../models/users.model').userModel();
+const Project = require('../models/projects.model').projectModel();
 
 const schemaValidator = Joi.object({
     firstName: Joi.string().min(3).max(30).required(),
@@ -42,10 +43,10 @@ exports.findByEmail = async (email) => {
 
 exports.list = async (perPage, page) => {
     return await User.find()
-            .limit(perPage)
-            .skip(perPage * page)
-            .select(["-password", "-__v"])
-            .exec();
+        .limit(perPage)
+        .skip(perPage * page)
+        .select(["-password", "-v", "-__v"])
+        .exec();
 };
 
 exports.putUser = async (id, userData) => {
@@ -91,6 +92,12 @@ exports.patchUser = async (id, userData) => {
 exports.removeById = async (userId) => {
     await checkUser(userId);
     await User.deleteOne({_id: userId});
+};
+
+exports.getProjects = async (userId) => {
+    return await Project.find({team:{"$in": [userId]}})
+        .select(["-_v", "-__v"])
+        .exec();
 };
 
 async function checkUser(id) {

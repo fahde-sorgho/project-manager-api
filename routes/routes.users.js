@@ -187,4 +187,33 @@ exports.routesConfig = function (app) {
         AuthValidation.validJWTNeeded,
         UsersController.removeById
     ]);
+
+    /**
+     * @swagger
+     * /users/{userId}/projects:
+     *    get:
+     *      tags:
+     *          - "users"
+     *      description: Get user projects
+     *      produces:
+     *          - "application/json"
+     *      parameters:
+     *          - name: "userId"
+     *            type: string
+     *            in: "query"
+     *            required: true
+     *      responses:
+     *          200:
+     *              description: "Return projects"
+     *              schema:
+     *                  type: "array"
+     *                  items:
+     *                      $ref: "#/definitions/Project"
+     *          404:
+     *              description: "User not found"
+     */
+    app.get('/users/:userId/projects', [
+        AuthValidation.validJWTNeeded,
+        UsersController.getProjects
+    ]);
 };
