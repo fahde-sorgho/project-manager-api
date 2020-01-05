@@ -33,7 +33,6 @@ exports.routesConfig = function (app) {
      *              description: "Unprocessable Entity"
      */
     app.post('/users', [
-        AuthValidation.validJWTNeeded,
         UsersController.insert
     ]);
 
