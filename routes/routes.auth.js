@@ -34,11 +34,12 @@ exports.routesConfig = function (app) {
      *              schema:
      *                  type: object
      *                  properties:
+     *                       userId:
+     *                          type: "string"
      *                       accessToken:
      *                          type: "string"
-     *                       refreshToken:
-     *                          type: "string"
      *                  example:
+     *                     userId:  "a983e77a-00b8-45f7-966d-a165fead6571"
      *                     accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDg5MzNjODRmMTIyZDYxM2M2MmM5NTQiLCJlbWFpbCI6Im1hcmNvcy5oZW5yaXF1ZUB0b3B0YWwuY29tIiwicGVybWlzc2lvbkxldmVsIjoxLCJwcm92aWRlciI6ImVtYWlsIiwibmFtZSI6Ik1hcmNvcyBTaWx2YSIsInJlZnJlc2hLZXkiOiJjWjhibEtHZWxOSWFoT1JRb01KakxRPT0iLCJpYXQiOjE1NzAxMTE0ODR9.BYhKDEsrfDPNjS7Pqf3k1cL-1tYs--N8Sp2UF_E5mVk"
      *          400:
      *              description: "Missing or invalid credentials"
