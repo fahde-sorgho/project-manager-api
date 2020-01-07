@@ -94,7 +94,7 @@ exports.removeById = async (id) => {
 exports.addInTeam = async (id, userId) => {
     try {
         await userService.findById(userId);
-        let project = await checkProject(id);
+        let project = await checkProjectWOPopulate(id);
 
         if (!project.team.includes(userId)) {
             project.team.push(userId);
@@ -109,11 +109,7 @@ exports.addInTeam = async (id, userId) => {
 };
 
 exports.removeFromTeam = async (id, userId) => {
-    let project = await Project.findOne({_id: id});
-
-    if (!project)
-        throw "Project not found";
-
+    let project = await checkProjectWOPopulate(id);
     if (!project.team.includes(userId))
         throw "This user is not in the project";
 
@@ -127,6 +123,15 @@ async function checkProject(id) {
     let project = await Project.findOne({_id: id})
         .populate('team', '-password -_v -__v -permissionLevel')
         .populate('sprints.tasks.assignedTo', '-password -_v -__v -permissionLevel');
+
+    if (!project)
+        throw "Project not found";
+
+    return project;
+}
+
+async function checkProjectWOPopulate(id) {
+    let project = await Project.findOne({_id: id});
 
     if (!project)
         throw "Project not found";
