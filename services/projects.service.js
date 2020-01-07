@@ -109,10 +109,13 @@ exports.addInTeam = async (id, userId) => {
 };
 
 exports.removeFromTeam = async (id, userId) => {
-    let project = await checkProject(id);
-    if (!project.team.includes(userId)){
+    let project = await Project.findOne({_id: id});
+
+    if (!project)
+        throw "Project not found";
+
+    if (!project.team.includes(userId))
         throw "This user is not in the project";
-    }
 
     project.team.splice(project.team.indexOf(userId),1);
     await project.save();
