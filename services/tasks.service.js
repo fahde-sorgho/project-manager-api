@@ -8,8 +8,8 @@ const schemaValidator = Joi.object({
     description:  Joi.string().min(10).required(),
     status: Joi.string().valid('todo','doing','finished').required(),
     grade: Joi.number(),
-    startDate: Joi.date(),
-    endDate: Joi.date().greater(Joi.ref('startDate')),
+    startDate: Joi.date().required(),
+    endDate: Joi.date().greater(Joi.ref('startDate')).required(),
 });
 
 exports.create = async (projectId, sprintId, taskData) => {

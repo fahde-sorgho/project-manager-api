@@ -27,8 +27,8 @@ exports.isAuthValid = (req, res, next) => {
             if(!user[0]){
                 res.status(404).send({errors: 'User not found'});
             }else{
-                bcrypt.compare(req.body.password, user[0].password, function(err, res) {
-                    if (res) {
+                bcrypt.compare(req.body.password, user[0].password, function(err, result) {
+                    if (result) {
                         req.body = {
                             userId: user[0]._id,
                             email: user[0].email,
