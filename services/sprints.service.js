@@ -6,7 +6,7 @@ const schemaValidator = Joi.object({
     name: Joi.string().min(3).max(30).required(),
     description:  Joi.string().min(10).required(),
     startDate: Joi.date(),
-    endDate: Joi.date(),
+    endDate: Joi.date().greater(Joi.ref('startDate')),
 });
 
 exports.create = async (id, sprintData) => {

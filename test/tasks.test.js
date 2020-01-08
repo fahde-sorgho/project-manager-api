@@ -91,7 +91,7 @@ describe('Tasks', () => {
                         status: 'todo',
                         grade: 8,
                         startDate: '2019-06-10',
-                        endDate: '2019-10-10'
+                        endDate: '2019-10-11'
                     }
                 )
                 .end((err, res) => {
@@ -125,7 +125,7 @@ describe('Tasks', () => {
                         status: 'todo',
                         grade: 8,
                         startDate: '2019-06-10',
-                        endDate: '2019-10-10'
+                        endDate: '2019-10-11'
                     }
                 )
                 .end((err, res) => {

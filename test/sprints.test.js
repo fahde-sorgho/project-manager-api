@@ -75,7 +75,7 @@ describe('Sprints', () => {
                     name: 'Test sprint',
                     description: 'Desc test sprint',
                     startDate: '2019-06-10',
-                    endDate: '2019-10-10'
+                    endDate: '2019-10-11'
                     }
                 )
                 .end((err, res) => {
@@ -107,7 +107,7 @@ describe('Sprints', () => {
                         name: 'Test sprint put',
                         description: 'Desc test sprint',
                         startDate: '2019-06-10',
-                        endDate: '2019-10-10'
+                        endDate: '2019-10-11'
                     }
                 )
                 .end((err, res) => {

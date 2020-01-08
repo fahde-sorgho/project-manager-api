@@ -63,7 +63,7 @@ describe('Projects', () => {
                     name: 'test project',
                     description: 'description project',
                     startDate: '2019-06-10',
-                    endDate: '2019-06-10'
+                    endDate: '2019-06-11'
                 })
                 .end( (err, res) => {
                     res.should.have.status(201);
@@ -94,7 +94,7 @@ describe('Projects', () => {
                         name: 'test project',
                         description: 'description project',
                         startDate: '2019-06-10',
-                        endDate: '2019-06-10'
+                        endDate: '2019-06-11'
                     }
                 )
                 .end((err, res) => {
